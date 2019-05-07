@@ -4,17 +4,30 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"strconv"
+	"web/models"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	s, _ := template.ParseFiles("./views/index.html")
-	s.Execute(w, nil)
+	posts := models.GetAll()
+	s, err := template.ParseFiles("./views/index.html")
+	if err != nil {
+		fmt.Println(err)
+	}
+	s.Execute(w, posts)
 }
 
 func Info(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	fmt.Println(r.Form["id"]) // id
-	s, _ := template.ParseFiles("./views/post.html")
-	s.Execute(w, nil)
+	id, err := strconv.Atoi(r.Form["id"][0])
+	if err != nil {
+		fmt.Println(err)
+	}
+	post :=models.GetInfo(id)
+	s, err := template.ParseFiles("./views/post.html")
+	if err != nil {
+		fmt.Println(err)
+	}
+	s.Execute(w, post)
 }

@@ -1,20 +1,16 @@
 package main
 
 import (
-	"log"
 	"net/http"
 	"web/routes"
 )
 
-
 func main() {
-
+	//引入路由
 	routes.Route()
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	err := http.ListenAndServe(":9090", nil)
-	if err != nil {
-		log.Fatal("listenAndServe:", err)
-	}
+	//监听端口
+	http.ListenAndServe(":80", nil)
+
 }
 
 
