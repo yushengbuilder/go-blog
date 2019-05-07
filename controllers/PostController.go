@@ -10,7 +10,8 @@ import (
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	posts := models.GetPostAll()
+	var postModel models.Post
+	posts := postModel.GetPosts()
 	s, err := template.ParseFiles("./views/index.html")
 	if err != nil {
 		fmt.Println(err)
@@ -24,7 +25,8 @@ func Info(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	post :=models.GetPostInfo(id)
+	var postModel models.Post
+	post := postModel.GetPost(id)
 	if err != nil {
 		fmt.Println(err)
 	}

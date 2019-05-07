@@ -13,13 +13,13 @@ type Post struct {
 	Content string `json:content`
 }
 
-func GetPostAll() []Post {
+func (p *Post) GetPosts() []Post {
 	var posts []Post
 	posts = readFakeDataFile("./fakeData/posts.json")
 	return posts
 }
 
-func GetPostInfo(id int) Post {
+func (p *Post) GetPost(id int) Post {
 	var posts []Post
 	var post Post
 	posts = readFakeDataFile("./fakeData/posts.json")
