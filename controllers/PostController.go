@@ -22,7 +22,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 func Info(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()                            //解析请求参数
-	id, err := strconv.Atoi(r.Form["id"][0]) //转换请求中id为数字
+	id, err := strconv.Atoi(r.Form.Get("id")) //转换请求中id为数字
 	if err != nil {
 		fmt.Println(err)
 		return

@@ -2,19 +2,21 @@
 
 <div style="text-align: center;margin-top: 300px" id ="login">
 
-    <form name="login",method="post",action="*">
+    <form method="post" action="/login">
 
         <div id = "loginDiv">
             <p style="left:10px">
                 Welcome to login!</p>
             <div id="user">
-                <input style="width: 400px;margin-bottom: 20px" type="text" placeholder="手机号\邮箱\昵称" style="height: 30px;"/>
+                <input style="width: 400px;margin-bottom: 20px" type="text" name="name" placeholder="昵称"/>
             </div>
             <div id="password">
-                <input style="width: 400px;margin-bottom: 20px" type="password"  placeholder="请输入密码" style="height: 30px;"/>
+                <input style="width: 400px;margin-bottom: 20px" type="password" name="password"  placeholder="请输入密码" />
             </div>
-            <input style="width: 400px;margin-bottom: 20px" type="submit" id="loginbutton" value="登录" />
+            <input style="width: 400px;margin-bottom: 20px" type="submit" id="login_button" value="登录" />
         </div>
+
+        <span>{{.}}</span>
 
     </form>
 </div>
